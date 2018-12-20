@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yealink.tcc.spring.boot.starter.parent.configuration.TccAutoConfiguration

@@ -1,0 +1,88 @@
+# 应用名称
+spring.application.name:  order-service
+spring.application.instance_id: 127.0.0.1
+
+server:
+  port: 8884
+  address: 127.0.0.1
+  servlet:
+    context-path: /
+    application-display-name: order-service
+
+spring:
+    datasource:
+        driver-class-name:  com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/tcc_order?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+    application:
+      name: order-service
+
+mybatis:
+  type-aliases-package: com.yealink.tcc.demo.springcloud.order.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+#${random.int[9000,9999]}
+eureka:
+ client:
+     serviceUrl:
+       defaultZone: http://localhost:8761/eureka/
+ instance:
+   prefer-ip-address: true
+
+logging:
+    level:
+        root: error
+        org.springframework.web: info
+        org.springframework.data.mongodb.core: DEBUG
+        org.apache.ibatis: error
+        com.yealink.tcc.bonuspoint: debug
+        com.yealink.tcc.lottery: debug
+        com.yealink.tcc: debug
+        io.netty: info
+    path: "./logs"
+
+#---
+#spring.profiles: db
+
+tcc.config:
+    connectTimeoutMillis: 5000
+    readTimeoutMillis: 5000
+    serializer: kryo
+    recoverDelayTime: 60
+    retryMax: 3
+    scheduledDelay: 70
+    scheduledThreadMax: 4
+    repositorySupport: mongodb
+    tccMongoConfig:
+        mongoDbUrl: 127.0.0.1:27017
+        mongoDbName : tcc
+        mongoUserName : tcc
+        mongoUserPwd : tcc
+#    repositorySupport: DB
+#    tccDbConfig:
+#        url: jdbc:mysql://127.0.0.1:3306/tcc?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8
+#        driverClassName : com.mysql.jdbc.Driver
+#        username : root
+#        password : root
+#    repositorySupport: REDIS
+#    tccRedisConfig:
+#        cluster: false
+#      # clusterUrl : 127.0.0.1:70001;127.0.1:7002
+#        hostName : 127.0.0.1
+#        port : 6379
+#        password :
+#    repositorySupport: zookeeper
+#    tccZookeeperConfig:
+#        host: false
+#        sessionTimeOut : 6379
+#        rootPath : /tcc
+#    repositorySupport: FILE
+#    tccFileConfig:
+#        path: /order
+#        prefix : order
+
+
+
+
+
+

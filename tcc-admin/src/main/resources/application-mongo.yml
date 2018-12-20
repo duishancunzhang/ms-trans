@@ -1,0 +1,6 @@
+compensation:
+   mongo :
+      url : 127.0.0.1:27017
+      dbName : happylife
+      userName : yl1997
+      password : root

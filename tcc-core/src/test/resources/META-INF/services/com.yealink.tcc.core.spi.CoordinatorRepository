@@ -1,0 +1,5 @@
+com.yealink.tcc.core.spi.repository.JdbcCoordinatorRepository
+com.yealink.tcc.core.spi.repository.FileCoordinatorRepository
+com.yealink.tcc.core.spi.repository.MongoCoordinatorRepository
+com.yealink.tcc.core.spi.repository.RedisCoordinatorRepository
+com.yealink.tcc.core.spi.repository.ZookeeperCoordinatorRepository

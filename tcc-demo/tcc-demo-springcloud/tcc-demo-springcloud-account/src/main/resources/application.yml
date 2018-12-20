@@ -1,0 +1,82 @@
+# 应用名称
+spring.application.name: account-service
+spring.application.instance_id: 127.0.0.1
+
+
+server:
+  port: 8882
+  address: 0.0.0.0
+  servlet:
+    context-path: /account-service
+
+#业务数据库
+spring:
+    datasource:
+        driver-class-name:  com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/tcc_account?useSSL=false&amp;useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+    application:
+      name: account-service
+
+tcc.config:
+    serializer: kryo
+    recoverDelayTime: 60
+    retryMax: 10
+    scheduledDelay: 70
+    scheduledThreadMax: 4
+#    repositorySupport: db
+#    tccDbConfig:
+#        url: jdbc:mysql://127.0.0.1:3306/tcc?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8
+#        driverClassName : com.mysql.jdbc.Driver
+#        username : root
+#        password : root
+#    repositorySupport: redis
+#    tccRedisConfig:
+#        cluster: false
+#      # clusterUrl : 127.0.0.1:70001;127.0.1:7002
+#        hostName : 127.0.0.1
+#        port : 6379
+#        password :
+#    repositorySupport: zookeeper
+#    tccZookeeperConfig:
+#        host: false
+#        sessionTimeOut : 6379
+#        rootPath : /tcc
+    repositorySupport: mongodb
+    tccMongoConfig:
+        mongoDbUrl: 127.0.0.1:27017
+        mongoDbName : tcc
+        mongoUserName : tcc
+        mongoUserPwd : tcc
+#    repositorySupport: file
+#    tccFileConfig:
+#        path: /order
+#        prefix : order
+
+mybatis:
+  type-aliases-package: com.yealink.tcc.demo.springcloud.account.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+#${random.int[9000,9999]}
+eureka:
+ client:
+     serviceUrl:
+       defaultZone: http://localhost:8761/eureka/
+ instance:
+   prefer-ip-address: true
+
+account-service :
+   ribbon.NFLoadBalancerRuleClassName : com.netflix.loadbalancer.RandomRule
+
+logging:
+    level:
+        root: error
+        org.springframework.web: info
+        org.springframework.data.mongodb.core: DEBUG
+        org.apache.ibatis: info
+        com.yealink.tcc.bonuspoint: debug
+        com.yealink.tcc.lottery: debug
+        com.yealink.tcc: debug
+        io.netty: info
+    path: "./logs"
+

@@ -1,0 +1,4 @@
+com.yealink.tcc.common.serializer.KryoSerializer
+com.yealink.tcc.common.serializer.ProtostuffSerializer
+com.yealink.tcc.common.serializer.HessianSerializer
+com.yealink.tcc.common.serializer.JavaSerializer
